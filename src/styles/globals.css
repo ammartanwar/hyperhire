@@ -70,7 +70,7 @@ li {
   background: none !important;
 }
 
-@media only screen and (max-width: 600px) {
+/* @media only screen and (max-width: 600px) {
   .swiper-cards .swiper-slide {
     margin-right: 0px !important;
     padding-left: 36px !important;
@@ -80,4 +80,4 @@ li {
   .swiper-slide {
     width: 300px !important;
   }
-}
+} */
