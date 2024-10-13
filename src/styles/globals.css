@@ -77,7 +77,7 @@ li {
     margin-left: 20px !important; */
   }
 
-  /* .swiper-slide {
-    width: 300px !important;
-  } */
+  .swiper-slide {
+    width: 320px !important;
+  }
 }
