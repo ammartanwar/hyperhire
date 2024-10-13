@@ -36,7 +36,7 @@ const SwiperSection: React.FC = () => {
                 )}
                 {activeIndex === index && <SvgIconTwo />}
                 <div
-                  className={`px-3 py-9 md:p-9 w-[300px] md:w-[295px] flex flex-col items-center rounded-xl shadow-lg ${
+                  className={`px-3 py-9 md:p-9 w-[260px] md:w-[295px] flex flex-col items-center rounded-xl shadow-lg ${
                     activeIndex === index ? 'bg-white' : 'bg-[#EDFCFF]' // Conditional background color
                   }`}>
                   <Image
