@@ -27,7 +27,7 @@ const SwiperSection: React.FC = () => {
         {SwiperData.map((item, index) => (
           <SwiperSlide key={item.id}>
             <div className={activeIndex === index ? '' : 'mt-20'}>
-              <div className="flex flex-col items-center relative md:left-0 left-6">
+              <div className="flex flex-col items-center relative md:left-0 left-8">
                 {activeIndex === index && (
                   <div className="text-[#00C696] font-bold text-lg bg-[#E9F7EF] flex items-center m-auto px-4 rounded-lg py-2">
                     <SvgIconOne />
