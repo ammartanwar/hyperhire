@@ -27,7 +27,7 @@ const SwiperSection: React.FC = () => {
   if (windowWidth === null) return null;
   const coverflowEffect = {
     rotate: 0,
-    stretch: windowWidth < 768 ? 150 : 40,
+    stretch: windowWidth < 768 ? 170 : 40,
     depth: 100,
     modifier: 2,
   };
