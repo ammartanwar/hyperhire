@@ -66,18 +66,14 @@ li {
   color: #fff;
 }
 
-.swiper-3d .swiper-slide-shadow {
-  background: none !important;
+.swiper-3d .swiper-slide-shadow-left, .swiper-3d .swiper-slide-shadow-right{
+  background-image:none !important;
 }
 
-@media only screen and (max-width: 600px) {
-  .swiper-cards .swiper-slide {
-    margin-right: 0px !important;
-    /* padding-left: 36px !important;
-    margin-left: 20px !important; */
-  }
+.swiper-button-prev {
+  left: 0 !important;
+}
 
-  /* .swiper-slide {
-    width: 300px !important;
-  } */
+.swiper-button-next {
+  right: 0 !important;
 }

@@ -4,26 +4,55 @@ import SwiperData from './SwiperData';
 import SvgIconOne from './svgIconOne';
 import SvgIconTwo from './svgIconTwo';
 import 'swiper/css';
-import 'swiper/css/effect-cards';
 import 'swiper/css/navigation';
-import { Navigation, EffectCards } from 'swiper/modules';
-import { useState } from 'react';
+import { Navigation, EffectCoverflow } from 'swiper/modules';
+import { useState, useEffect, useRef } from 'react';
 
 const SwiperSection: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(1);
+  const swiperRef = useRef(null);
+  const [windowWidth, setWindowWidth] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const handleResize = () => setWindowWidth(window.innerWidth);
+      setWindowWidth(window.innerWidth);
+
+      window.addEventListener('resize', handleResize);
+
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
+
+  if (windowWidth === null) return null;
+  const coverflowEffect = {
+    rotate: 0,
+    stretch: windowWidth < 768 ? 200 : 50,
+    depth: 100,
+    modifier: 2,
+  };
   return (
     <>
       <Swiper
-        modules={[Navigation, EffectCards]}
-        navigation
-        pagination={{ clickable: true }}
-        spaceBetween={50}
-        effect={'cards'}
-        grabCursor={true}
-        initialSlide={1}
-        className="mySwiper"
+        spaceBetween={10}
         slidesPerView={1}
-        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}>
+        centeredSlides={true}
+        navigation
+        ref={swiperRef}
+        grabCursor={true}
+        touchRatio={1}
+        freeMode={false}
+        modules={[EffectCoverflow, Navigation]}
+        effect="coverflow"
+        coverflowEffect={coverflowEffect}
+        initialSlide={1}
+        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+        breakpoints={{
+          320: { slidesPerView: 1, spaceBetween: 10 },
+          768: { slidesPerView: 2, spaceBetween: 20 },
+          1024: { slidesPerView: 3, spaceBetween: 30 },
+          1440: { slidesPerView: 3, spaceBetween: 30 },
+        }}>
         {SwiperData.map((item, index) => (
           <SwiperSlide key={item.id}>
             <div className={activeIndex === index ? '' : 'mt-20'}>
@@ -37,7 +66,7 @@ const SwiperSection: React.FC = () => {
                 {activeIndex === index && <SvgIconTwo />}
                 <div
                   className={`px-3 py-9 md:p-9 w-[260px] md:w-[295px] flex flex-col items-center rounded-xl shadow-lg ${
-                    activeIndex === index ? 'bg-white' : 'bg-[#EDFCFF]' // Conditional background color
+                    activeIndex === index ? 'bg-white' : 'bg-[#EDFCFF]'
                   }`}>
                   <Image
                     src={item.proImage}
